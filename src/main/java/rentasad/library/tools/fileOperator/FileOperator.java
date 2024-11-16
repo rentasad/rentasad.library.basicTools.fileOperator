@@ -1,5 +1,7 @@
 package rentasad.library.tools.fileOperator;
 
+import rentasad.library.basicTools.dateTool.DateTools;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +19,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.zip.CRC32;
 
-import rentasad.library.basicTools.dateTool.DateTools;
 
 /**
  * 
@@ -189,13 +190,11 @@ public class FileOperator
     }
 
     /**
-     * 
-     * Description: 
-     * 
-     * @param folderPath
-     * @param fileFilter
-     * @return
-     * Creation: 14.12.2016 by mst
+     * Retrieves an array of files from a given directory that have a specific file extension.
+     *
+     * @param folderPath the directory from which to retrieve files
+     * @param extension the file extension to filter by
+     * @return an array of files with the specified extension, or null if the given folder path is not a directory or doesn't exist
      */
     public static File[] getFilesFromPathWithFileExtension(File folderPath, final String extension)
     {

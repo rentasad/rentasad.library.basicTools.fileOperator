@@ -1,0 +1,3 @@
+[submodule "submodules/rentasad.library.basicTools.dateTools"]
+	path = submodules/rentasad.library.basicTools.dateTools
+	url = https://github.com/rentasad/rentasad.library.basicTools.dateTools

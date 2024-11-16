@@ -3,43 +3,38 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<artifactId>rentasad.library.basicTools</artifactId>
-		<groupId>rentasad.library</groupId>
-		<version>B2.6.2</version>
-	</parent>
 
 	<groupId>rentasad.library</groupId>
 	<artifactId>rentasad.library.basicTools.fileOperator</artifactId>
+	<version>3.0.0</version>
 
-<!-- 
-COPY & PASTE FOR INSERT:
-		<dependency>
-			<groupId>rentasad.library</groupId>
-			<artifactId>rentasad.library.basicTools.fileOperator</artifactId>
-			<version>B2.2.2</version>
-		</dependency>
- -->
 
 	<name>rentasad.library.basicTools.fileOperator</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.java.version>17</project.java.version>
 		<maven.compiler.source>${project.java.version}</maven.compiler.source>
 		<maven.compiler.target>${project.java.version}</maven.compiler.target>
+		<!-- DEPENDENCIES VERSIONS -->
+		<maven-clean-plugin>3.2.0</maven-clean-plugin>
+		<maven-resources-plugin>3.3.1</maven-resources-plugin>
+		<maven-compiler-plugin>3.11.0</maven-compiler-plugin>
+		<maven-surefire-plugin>3.1.2</maven-surefire-plugin>
+		<maven-jar-plugin>3.3.0</maven-jar-plugin>
+		<maven-install-plugin>3.1.1</maven-install-plugin>
+		<maven-deploy-plugin>3.1.1</maven-deploy-plugin>
+		<maven-site-plugin>3.12.1</maven-site-plugin>
+		<mavenProjectInfoReportsPlugin>3.1.2</mavenProjectInfoReportsPlugin>
+		<maven-project-info-reports-plugin>3.4.5</maven-project-info-reports-plugin>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.9.0</version>
+			<version>5.9.3</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>rentasad.library</groupId>
-			<artifactId>rentasad.library.basicTools.dateTools</artifactId>
-			<version>${basicToolParentVersion}</version>
 		</dependency>
 	</dependencies>
 
@@ -60,6 +55,13 @@ COPY & PASTE FOR INSERT:
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin}</version>
+					<configuration>
+						<source>${project.java.version}</source>
+						<target>${project.java.version}</target>
+						<compileSourceRoots>
+							<compileSourceRoot>${project.basedir}/submodules/rentasad.library.basicTools.dateTool.DateTools/src/main/java</compileSourceRoot>
+						</compileSourceRoots>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>

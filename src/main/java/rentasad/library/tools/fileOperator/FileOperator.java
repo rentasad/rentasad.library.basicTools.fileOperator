@@ -33,9 +33,10 @@ public class FileOperator
 {
 
     /**
-     * return URL to path from file in resources
-     * @param path
-     * @return
+     * Retrieves a URL for a resource file given its path.
+     *
+     * @param path the path to the resource file
+     * @return the URL pointing to the resource file, or null if the resource could not be found
      */
     public static URL getUrlFromResourceFile(final String path)
     {
@@ -44,9 +45,11 @@ public class FileOperator
     }
 
     /**
-     * return URL to path from file in resources
-     * @param path
-     * @return
+     * Retrieves an InputStream from a resource file given its path.
+     *
+     * @param path the path to the resource file
+     * @return the InputStream holding the file content
+     * @throws IOException if the file cannot be found or opened
      */
     public static InputStream getInputStreamFromResourceFile(final String path) throws IOException
     {
@@ -63,14 +66,12 @@ public class FileOperator
     }
 
     /**
-     * return value of file as String from resources
+     * Reads the content of a specified file from the resources and returns it as a String.
      *
-     * @param path relative Path in resource to readable file
-     * @return
-     * @throws FileNotFoundException
-     * @throws IOException
+     * @param path the path to the resource file
+     * @return the content of the file as a String
+     * @throws IOException if an I/O error occurs while reading the file
      */
-
     public static String getFileValueFromResources(final String path) throws IOException
     {
         String fileValue = null;
@@ -88,12 +89,12 @@ public class FileOperator
     }
 
     /**
-     * Gibt den Inhalt einer Datei als String zurueck
+     * Reads the content of a specified file and returns it as a String.
      *
-     * @param fileName
-     * @return
-     * @throws FileNotFoundException
-     * @throws IOException
+     * @param fileName the name of the file to read
+     * @return the content of the file as a String
+     * @throws FileNotFoundException if the specified file does not exist
+     * @throws IOException if an I/O error occurs while reading the file
      */
 	
     public static String getFileValue(String fileName) throws FileNotFoundException, IOException
@@ -114,12 +115,10 @@ public class FileOperator
     }
 
     /**
+     * Converts an array of file name strings to an array of File objects.
      *
-     * Description: Gibt zu einem FileNameArray ein daraus erstelltes FileArray zurueck.
-     *
-     * @param fileNameArray
-     * @return
-     *         Creation: 13.10.2015 by mst
+     * @param fileNameArray an array of file name strings to be converted
+     * @return an array of File objects corresponding to the provided file name strings
      */
     public static File[] getFilesFromFileNameArray(String[] fileNameArray)
     {
@@ -131,14 +130,14 @@ public class FileOperator
         return fileList.toArray(new File[0]);
     }
     /**
-     * 
-     * Description: Move a file to target path and throw different exceptions 
-     * 
-     * @param sourceFile
-     * @param path
-     * @throws FileCouldNotDeleteException
-     * @throws IOException
-     * Creation: 15.12.2016 by mst
+     * Moves a file to a specified directory path. If the file already exists at the target location,
+     * an exception will be thrown. If the file cannot be deleted from the source after copying, an exception will be thrown.
+     *
+     * @param sourceFile the file to be moved
+     * @param path the destination directory path where the file will be moved
+     * @throws FileCouldNotDeleteException if the source file could not be deleted after copying
+     * @throws FileAlreadyExistException if a file with the same name already exists at the destination path
+     * @throws IOException if an I/O error occurs during the file operation
      */
     public static void moveFileToPath(File sourceFile, String path) throws FileCouldNotDeleteException, FileAlreadyExistException, IOException
     {
@@ -171,12 +170,11 @@ public class FileOperator
     }
 
     /**
+     * Converts an array of file name strings to an array of File objects, each prepended with an additional path.
      *
-     * Description: Gibt zu einem FileNameArray ein daraus erstelltes FileArray zurueck.
-     *
-     * @param fileNameArray
-     * @return
-     *         Creation: 13.10.2015 by mst
+     * @param fileNameArray an array of file name strings to be converted
+     * @param additionalPath the path to be prepended to each file name
+     * @return an array of File objects corresponding to the provided file name strings with additional path
      */
     public static File[] getFilesFromFileNameArray(String[] fileNameArray, String additionalPath)
     {
@@ -190,11 +188,11 @@ public class FileOperator
     }
 
     /**
-     * Retrieves an array of files from a given directory that have a specific file extension.
+     * Retrieves an array of files from a specified directory that match the given file extension.
      *
-     * @param folderPath the directory from which to retrieve files
+     * @param folderPath the directory from which to retrieve the files
      * @param extension the file extension to filter by
-     * @return an array of files with the specified extension, or null if the given folder path is not a directory or doesn't exist
+     * @return an array of files with the specified extension, or null if the directory does not exist or is not a directory
      */
     public static File[] getFilesFromPathWithFileExtension(File folderPath, final String extension)
     {
@@ -224,13 +222,12 @@ public class FileOperator
     }
 
     /**
+     * Converts an ArrayList of file name strings to an array of File objects,
+     * each prepended with an additional path.
      *
-     * Description: Gibt zu einer FileNameArrayList ein daraus erstelltes FileArray zurueck.
-     *
-     * @param fileNamesToProvideArrayList
-     * @param tempDirPath
-     * @return
-     *         Creation: 13.10.2015 by mst
+     * @param fileNamesToProvideArrayList an ArrayList of file name strings to be converted
+     * @param tempDirPath the path to be prepended to each file name
+     * @return an array of File objects corresponding to the provided file name strings with additional path
      */
     public static File[] getFilesFromFileNameArray(ArrayList<String> fileNamesToProvideArrayList, String tempDirPath)
     {
@@ -239,10 +236,10 @@ public class FileOperator
     }
 
     /**
-     * Gibt den Dateinamen einer Datei ohne den Pfad zurueck
+     * Extracts the name of the file from the specified path.
      *
-     * @param pathName
-     * @return
+     * @param pathName the full path of the file
+     * @return the name of the file
      */
     public static String getFileNameFromPath(String pathName)
     {
@@ -251,11 +248,12 @@ public class FileOperator
     }
 
     /**
-     * Kopiert Datei von File in zu File out.
+     * Copies a file from the specified source to the specified destination.
      *
-     * @param in
-     * @param out
-     * @throws IOException
+     * @param in the source file to be copied
+     * @param out the destination file where the content is to be copied
+     * @return true if the file copy is successful and the destination file exists, false otherwise
+     * @throws IOException if an I/O error occurs during the file operation
      */
     @SuppressWarnings("resource")
     public static boolean copyFile(File in, File out) throws IOException
@@ -287,15 +285,12 @@ public class FileOperator
     }
 
     /**
+     * Copies an array of files to the specified destination path.
      *
-     * Description:
-     *
-     * @param files
-     * @param destinationPath
-     *            without ending File.separator
-     * @return
-     * @throws IOException
-     *             Creation: 13.10.2015 by mst
+     * @param files the array of files to be copied
+     * @param destinationPath the path where the files will be copied to
+     * @return true if all files were copied successfully and exist at the destination, false otherwise
+     * @throws IOException if an I/O error occurs during the file copy process or if a file does not exist
      */
     public static boolean copyFilesToDestinationPath(File[] files, String destinationPath) throws IOException
     {
@@ -318,10 +313,10 @@ public class FileOperator
     }
 
     /**
-     * Erstellt ein Verzeichnis mit einem aktuellem Timestamp als Dateinamen.
+     * Creates a directory with a timestamp appended to the specified parent directory.
      *
-     * @param parentPath
-     * @return String Filename wenn Erzeugung erfolgreich. Wenn Verzeichnis nicht erzeugt werden konnte, gibt es NULL zurueck.
+     * @param parentPath the parent directory to which the timestamped directory will be added
+     * @return the full path of the newly created timestamped directory, or null if the directory could not be created
      */
     public static String makeTimeStampDir(String parentPath)
     {
@@ -341,13 +336,11 @@ public class FileOperator
     }
 
     /**
+     * Reads the content of a specified file and returns it as a String.
      *
-     * Description: Liest eine Datei aus und gibt deren Inhalt als String zurueck
-     *
-     * @param file
-     * @return
-     * @throws IOException
-     *             Creation: 23.02.2016 by mst
+     * @param file the path to the file to read
+     * @return the content of the file as a String
+     * @throws IOException if an I/O error occurs while reading the file
      */
     public static String readFile(String file) throws IOException
     {
@@ -371,12 +364,25 @@ public class FileOperator
         }
     }
 
+    /**
+     * Checks whether a directory exists at the specified path.
+     *
+     * @param destinationPath the path of the directory to check
+     * @return true if a directory exists at the specified path, false otherwise
+     */
     public static boolean existDirectory(String destinationPath)
     {
         File file = new File(destinationPath);
         return (file.exists() && file.isDirectory());
     }
     
+    /**
+     * Retrieves the CRC (Cyclic Redundancy Check) value for a specified file.
+     *
+     * @param file the file from which to calculate the CRC value
+     * @return the CRC value of the file, or null if the file does not exist or is not a valid file
+     * @throws IOException if an I/O error occurs while reading the file
+     */
     public static Long getCrcFromFile(File file) throws IOException
     {
         if (file.exists() && file.isFile())
@@ -391,6 +397,12 @@ public class FileOperator
     
     
 
+    /**
+     * Retrieves the timestamp of the last modification for the specified file.
+     *
+     * @param fileName the name or path of the file
+     * @return a Date object representing the last modification timestamp of the file
+     */
     public static Date getTimeStampFromFile(String fileName)
     {
         File file = new File(fileName);
@@ -398,11 +410,12 @@ public class FileOperator
     }
     
     /**
-    *
-    * @param inputStream
-    * @return
-    * @throws IOException
-    */
+     * Calculates and returns the CRC (Cyclic Redundancy Check) value for the given input stream.
+     *
+     * @param inputStream the InputStream from which to calculate the CRC value
+     * @return the CRC value of the data read from the input stream
+     * @throws IOException if an I/O error occurs while reading the input stream
+     */
 
    public static Long getCRCFromInputStream(InputStream inputStream) throws IOException
    {
@@ -417,6 +430,13 @@ public class FileOperator
        return crc32.getValue();
    }
 
+    /**
+     * Retrieves the character encoding of a specified CSV file.
+     *
+     * @param csvFile the File object representing the CSV file
+     * @return the name of the character encoding used by the file as a String
+     * @throws IOException if an I/O error occurs while reading the file
+     */
     public static String getEncodingFromFile(File csvFile) throws IOException
     {
         InputStreamReader r = new InputStreamReader(new FileInputStream(csvFile));

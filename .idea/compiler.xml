@@ -9,5 +9,8 @@
         <module name="rentasad.library.basicTools.fileOperator" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rentasad.library.basicTools.dateTools" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
